@@ -1,0 +1,45 @@
+{
+    // Place your settings in this file to overwrite default and user settings.
+    // Controls the rendering size of tabs in characters. Accepted values: "auto", 2, 4, 6, etc. If set to "auto", the value will be guessed when a file is opened.
+    "editor.tabSize": 2,
+    // When opening a file, `editor.tabSize` and `editor.insertSpaces` will be detected based on the file contents.
+    "editor.detectIndentation": false,
+    // When enabled, will trim trailing whitespace when you save a file.
+    "files.trimTrailingWhitespace": true,
+    // Controls if the editor will insert spaces for tabs. Accepted values:  "auto", true, false. If set to "auto", the value will be guessed when a file is opened.
+    "editor.insertSpaces": true,
+    // Format a file on save. A formatter must be available, the file must not be auto-saved, and editor must not be shutting down.
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
+    },
+    // Hide the compiled JS file to clean searching in VS code
+    "files.exclude": {
+      "**/node_modules": true
+    },
+    "search.exclude": {
+      "**/node_modules": true
+    },
+    "prettier.prettierPath": "node_modules/prettier",
+    "cSpell.words": [
+      "hocs",
+      "karapet",
+      "lilit",
+      "mixins",
+      "mockdate",
+      "semibold",
+      "Swiper",
+      "testid",
+      "Timeslot",
+      "timeslots",
+      "YARDSTIK"
+    ],
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[css]": {
+      "editor.defaultFormatter": "vscode.css-language-features"
+    }
+  }
+  
