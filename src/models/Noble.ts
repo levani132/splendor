@@ -19,85 +19,85 @@ export const NOBLE_TILES: Noble[] = [
     points: 3,
     name: 'Mary Stuart',
     neededCards: {
-      Green: 4,
-      Red: 4,
+      green: 4,
+      red: 4,
     },
   },
   {
     points: 3,
     name: 'Machiavelli',
     neededCards: {
-      White: 4,
-      Blue: 4,
+      white: 4,
+      blue: 4,
     },
   },
   {
     points: 3,
     name: 'Isabel of Castille',
     neededCards: {
-      White: 4,
-      Black: 4,
+      white: 4,
+      black: 4,
     },
   },
   {
     points: 3,
     name: 'Soliman the Magnificent',
     neededCards: {
-      Blue: 4,
-      Green: 4,
+      blue: 4,
+      green: 4,
     },
   },
   {
     points: 3,
     name: 'Henry VIII',
     neededCards: {
-      Black: 4,
-      Red: 4,
+      black: 4,
+      red: 4,
     },
   },
   {
     points: 3,
     name: 'Charles Quint',
     neededCards: {
-      Black: 3,
-      White: 3,
-      Red: 3,
+      black: 3,
+      white: 3,
+      red: 3,
     },
   },
   {
     points: 3,
     name: 'Catherine of Medicis',
     neededCards: {
-      Green: 3,
-      Blue: 3,
-      Red: 3,
+      green: 3,
+      blue: 3,
+      red: 3,
     },
   },
   {
     points: 3,
     name: 'Anne of Brittany',
     neededCards: {
-      White: 3,
-      Green: 3,
-      Blue: 3,
+      white: 3,
+      green: 3,
+      blue: 3,
     },
   },
   {
     points: 3,
     name: 'Elisabeth of Austria',
     neededCards: {
-      White: 3,
-      Black: 3,
-      Blue: 3,
+      white: 3,
+      black: 3,
+      blue: 3,
     },
   },
   {
     points: 3,
     name: 'Francis I od France',
     neededCards: {
-      Black: 3,
-      Green: 3,
-      Red: 3,
+      black: 3,
+      green: 3,
+      red: 3,
     },
   },
 ];
@@ -105,5 +105,5 @@ export const NOBLE_TILES: Noble[] = [
 export interface Noble {
   points: 3;
   neededCards: PartialRecord<StandardColor, number>;
-  name: typeof NOBLE_NAMES[number];
+  name: (typeof NOBLE_NAMES)[number];
 }

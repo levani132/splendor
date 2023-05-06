@@ -22,27 +22,27 @@ export const RequiredPoints: FC<IRequiredPointsProps> = ({
     >
       <RequiredPoint
         color={StandardColor.Red}
-        number={neededColors.Red}
+        number={neededColors.red}
         type={type}
       />
       <RequiredPoint
         color={StandardColor.Green}
-        number={neededColors.Green}
+        number={neededColors.green}
         type={type}
       />
       <RequiredPoint
         color={StandardColor.Blue}
-        number={neededColors.Blue}
+        number={neededColors.blue}
         type={type}
       />
       <RequiredPoint
         color={StandardColor.White}
-        number={neededColors.White}
+        number={neededColors.white}
         type={type}
       />
       <RequiredPoint
         color={StandardColor.Black}
-        number={neededColors.Black}
+        number={neededColors.black}
         type={type}
       />
     </div>

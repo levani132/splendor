@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { Noble } from 'models/Noble';
-import { RequiredPoints } from './RequiredPoints';
+import { RequiredPoints } from '../../shared/RequiredPoints/RequiredPoints';
 
 export interface INobleTileProps {
   noble: Noble;

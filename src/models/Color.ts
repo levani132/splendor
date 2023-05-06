@@ -13,11 +13,21 @@ export enum StandardColor {
   Black = 'black',
 }
 
+export const STANDARD_COLORS = [
+  StandardColor.Red,
+  StandardColor.Green,
+  StandardColor.Blue,
+  StandardColor.White,
+  StandardColor.Black,
+];
+
 export enum SpecialColor {
   Gold = 'gold',
 }
 
 export type Color = StandardColor | SpecialColor;
+
+export const COLORS: Color[] = [...STANDARD_COLORS, SpecialColor.Gold];
 
 export const Gems = {
   [StandardColor.Red]: red,

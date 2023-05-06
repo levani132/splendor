@@ -2,588 +2,570 @@ import { PartialRecord } from 'utils/PartialRecord';
 import { Color, StandardColor } from './Color';
 import { Level } from './Level';
 
-const BLACK_DEVELOPMENT_CARDS: {
-  color: StandardColor.Black;
+interface ICard {
+  color: StandardColor;
   points: 0 | 1 | 2 | 3 | 4 | 5;
   neededTokens: PartialRecord<StandardColor, number>;
   level: Level;
-}[] = [
+}
+
+const BLACK_DEVELOPMENT_CARDS: ICard[] = [
   {
     color: StandardColor.Black,
     points: 0,
-    neededTokens: { White: 1, Blue: 1, Green: 1, Red: 1 },
+    neededTokens: { white: 1, blue: 1, green: 1, red: 1 },
     level: Level.Easy,
   },
   {
     color: StandardColor.Black,
     points: 0,
     level: Level.Easy,
-    neededTokens: { White: 1, Blue: 2, Green: 1, Red: 1 },
+    neededTokens: { white: 1, blue: 2, green: 1, red: 1 },
   },
   {
     color: StandardColor.Black,
     points: 0,
     level: Level.Easy,
-    neededTokens: { White: 2, Blue: 2, Red: 1 },
+    neededTokens: { white: 2, blue: 2, red: 1 },
   },
   {
     color: StandardColor.Black,
     points: 0,
     level: Level.Easy,
-    neededTokens: { Green: 1, Red: 3, Black: 1 },
+    neededTokens: { green: 1, red: 3, black: 1 },
   },
   {
     color: StandardColor.Black,
     points: 0,
     level: Level.Easy,
-    neededTokens: { Green: 2, Red: 1 },
+    neededTokens: { green: 2, red: 1 },
   },
   {
     color: StandardColor.Black,
     points: 0,
     level: Level.Easy,
-    neededTokens: { White: 2, Green: 2 },
+    neededTokens: { white: 2, green: 2 },
   },
   {
     color: StandardColor.Black,
     points: 0,
     level: Level.Easy,
-    neededTokens: { Green: 3 },
+    neededTokens: { green: 3 },
   },
   {
     color: StandardColor.Black,
     points: 1,
     level: Level.Easy,
-    neededTokens: { Blue: 4 },
+    neededTokens: { blue: 4 },
   },
   {
     color: StandardColor.Black,
     points: 1,
     level: Level.Medium,
-    neededTokens: { White: 3, Blue: 2, Green: 2 },
+    neededTokens: { white: 3, blue: 2, green: 2 },
   },
   {
     color: StandardColor.Black,
     points: 1,
     level: Level.Medium,
-    neededTokens: { White: 3, Green: 3, Black: 2 },
+    neededTokens: { white: 3, green: 3, black: 2 },
   },
   {
     color: StandardColor.Black,
     points: 2,
     level: Level.Medium,
-    neededTokens: { Blue: 1, Green: 4, Red: 2 },
+    neededTokens: { blue: 1, green: 4, red: 2 },
   },
   {
     color: StandardColor.Black,
     points: 2,
     level: Level.Medium,
-    neededTokens: { Green: 5, Red: 3 },
+    neededTokens: { green: 5, red: 3 },
   },
   {
     color: StandardColor.Black,
     points: 2,
     level: Level.Medium,
-    neededTokens: { White: 5 },
+    neededTokens: { white: 5 },
   },
   {
     color: StandardColor.Black,
     points: 3,
     level: Level.Medium,
-    neededTokens: { Black: 6 },
+    neededTokens: { black: 6 },
   },
   {
     color: StandardColor.Black,
     points: 3,
     level: Level.Hard,
-    neededTokens: { White: 3, Blue: 3, Green: 5, Red: 3 },
+    neededTokens: { white: 3, blue: 3, green: 5, red: 3 },
   },
   {
     color: StandardColor.Black,
     points: 4,
     level: Level.Hard,
-    neededTokens: { Red: 7 },
+    neededTokens: { red: 7 },
   },
   {
     color: StandardColor.Black,
     points: 4,
     level: Level.Hard,
-    neededTokens: { Green: 3, Red: 6, Black: 3 },
+    neededTokens: { green: 3, red: 6, black: 3 },
   },
   {
     color: StandardColor.Black,
     points: 5,
     level: Level.Hard,
-    neededTokens: { Red: 7, Black: 3 },
+    neededTokens: { red: 7, black: 3 },
   },
 ];
 
-const BLUE_DEVELOPMENT_CARDS: {
-  color: StandardColor.Blue;
-  points: 0 | 1 | 2 | 3 | 4 | 5;
-  neededTokens: PartialRecord<StandardColor, number>;
-  level: Level;
-}[] = [
+const BLUE_DEVELOPMENT_CARDS: ICard[] = [
   {
     color: StandardColor.Blue,
     points: 0,
-    neededTokens: { White: 1, Black: 1, Green: 1, Red: 1 },
+    neededTokens: { white: 1, black: 1, green: 1, red: 1 },
     level: Level.Easy,
   },
   {
     color: StandardColor.Blue,
     points: 0,
     level: Level.Easy,
-    neededTokens: { White: 1, Red: 2, Green: 1, Black: 1 },
+    neededTokens: { white: 1, red: 2, green: 1, black: 1 },
   },
   {
     color: StandardColor.Blue,
     points: 0,
     level: Level.Easy,
-    neededTokens: { Green: 2, Red: 2, White: 1 },
+    neededTokens: { green: 2, red: 2, white: 1 },
   },
   {
     color: StandardColor.Blue,
     points: 0,
     level: Level.Easy,
-    neededTokens: { Green: 3, Red: 1, Blue: 1 },
+    neededTokens: { green: 3, red: 1, blue: 1 },
   },
   {
     color: StandardColor.Blue,
     points: 0,
     level: Level.Easy,
-    neededTokens: { Black: 2, White: 1 },
+    neededTokens: { black: 2, white: 1 },
   },
   {
     color: StandardColor.Blue,
     points: 0,
     level: Level.Easy,
-    neededTokens: { Green: 2, Black: 2 },
+    neededTokens: { green: 2, black: 2 },
   },
   {
     color: StandardColor.Blue,
     points: 0,
     level: Level.Easy,
-    neededTokens: { Black: 3 },
+    neededTokens: { black: 3 },
   },
   {
     color: StandardColor.Blue,
     points: 1,
     level: Level.Easy,
-    neededTokens: { Red: 4 },
+    neededTokens: { red: 4 },
   },
   {
     color: StandardColor.Blue,
     points: 1,
     level: Level.Medium,
-    neededTokens: { Blue: 2, Green: 2, Red: 3 },
+    neededTokens: { blue: 2, green: 2, red: 3 },
   },
   {
     color: StandardColor.Blue,
     points: 1,
     level: Level.Medium,
-    neededTokens: { Blue: 2, Green: 3, Black: 3 },
+    neededTokens: { blue: 2, green: 3, black: 3 },
   },
   {
     color: StandardColor.Blue,
     points: 2,
     level: Level.Medium,
-    neededTokens: { White: 5, Blue: 3 },
+    neededTokens: { white: 5, blue: 3 },
   },
   {
     color: StandardColor.Blue,
     points: 2,
     level: Level.Medium,
-    neededTokens: { White: 2, Red: 1, Black: 4 },
+    neededTokens: { white: 2, red: 1, black: 4 },
   },
   {
     color: StandardColor.Blue,
     points: 2,
     level: Level.Medium,
-    neededTokens: { Blue: 5 },
+    neededTokens: { blue: 5 },
   },
   {
     color: StandardColor.Blue,
     points: 3,
     level: Level.Medium,
-    neededTokens: { Blue: 6 },
+    neededTokens: { blue: 6 },
   },
   {
     color: StandardColor.Blue,
     points: 3,
     level: Level.Hard,
-    neededTokens: { White: 3, Green: 3, Black: 5, Red: 3 },
+    neededTokens: { white: 3, green: 3, black: 5, red: 3 },
   },
   {
     color: StandardColor.Blue,
     points: 4,
     level: Level.Hard,
-    neededTokens: { White: 7 },
+    neededTokens: { white: 7 },
   },
   {
     color: StandardColor.Blue,
     points: 4,
     level: Level.Hard,
-    neededTokens: { Blue: 3, White: 6, Black: 3 },
+    neededTokens: { blue: 3, white: 6, black: 3 },
   },
   {
     color: StandardColor.Blue,
     points: 5,
     level: Level.Hard,
-    neededTokens: { White: 7, Blue: 3 },
+    neededTokens: { white: 7, blue: 3 },
   },
 ];
 
-const WHITE_DEVELOPMENT_CARDS: {
-  color: StandardColor.White;
-  points: 0 | 1 | 2 | 3 | 4 | 5;
-  neededTokens: PartialRecord<StandardColor, number>;
-  level: Level;
-}[] = [
+const WHITE_DEVELOPMENT_CARDS: ICard[] = [
   {
     color: StandardColor.White,
     points: 0,
-    neededTokens: { Black: 1, Blue: 1, Green: 1, Red: 1 },
+    neededTokens: { black: 1, blue: 1, green: 1, red: 1 },
     level: Level.Easy,
   },
   {
     color: StandardColor.White,
     points: 0,
     level: Level.Easy,
-    neededTokens: { Black: 1, Blue: 1, Green: 2, Red: 1 },
+    neededTokens: { black: 1, blue: 1, green: 2, red: 1 },
   },
   {
     color: StandardColor.White,
     points: 0,
     level: Level.Easy,
-    neededTokens: { Black: 1, Blue: 2, Green: 2 },
+    neededTokens: { black: 1, blue: 2, green: 2 },
   },
   {
     color: StandardColor.White,
     points: 0,
     level: Level.Easy,
-    neededTokens: { Black: 1, Blue: 1, White: 3 },
+    neededTokens: { black: 1, blue: 1, white: 3 },
   },
   {
     color: StandardColor.White,
     points: 0,
     level: Level.Easy,
-    neededTokens: { Black: 1, Red: 2 },
+    neededTokens: { black: 1, red: 2 },
   },
   {
     color: StandardColor.White,
     points: 0,
     level: Level.Easy,
-    neededTokens: { Black: 2, Blue: 2 },
+    neededTokens: { black: 2, blue: 2 },
   },
   {
     color: StandardColor.White,
     points: 0,
     level: Level.Easy,
-    neededTokens: { Blue: 3 },
+    neededTokens: { blue: 3 },
   },
   {
     color: StandardColor.White,
     points: 1,
     level: Level.Easy,
-    neededTokens: { Green: 4 },
+    neededTokens: { green: 4 },
   },
   {
     color: StandardColor.White,
     points: 1,
     level: Level.Medium,
-    neededTokens: { Black: 2, Green: 3, Red: 2 },
+    neededTokens: { black: 2, green: 3, red: 2 },
   },
   {
     color: StandardColor.White,
     points: 1,
     level: Level.Medium,
-    neededTokens: { Blue: 3, White: 2, Red: 3 },
+    neededTokens: { blue: 3, white: 2, red: 3 },
   },
   {
     color: StandardColor.White,
     points: 2,
     level: Level.Medium,
-    neededTokens: { Black: 2, Green: 1, Red: 4 },
+    neededTokens: { black: 2, green: 1, red: 4 },
   },
   {
     color: StandardColor.White,
     points: 2,
     level: Level.Medium,
-    neededTokens: { Black: 3, Red: 5 },
+    neededTokens: { black: 3, red: 5 },
   },
   {
     color: StandardColor.White,
     points: 2,
     level: Level.Medium,
-    neededTokens: { Red: 5 },
+    neededTokens: { red: 5 },
   },
   {
     color: StandardColor.White,
     points: 3,
     level: Level.Medium,
-    neededTokens: { White: 6 },
+    neededTokens: { white: 6 },
   },
   {
     color: StandardColor.White,
     points: 3,
     level: Level.Hard,
-    neededTokens: { Black: 3, Blue: 3, Green: 3, Red: 5 },
+    neededTokens: { black: 3, blue: 3, green: 3, red: 5 },
   },
   {
     color: StandardColor.White,
     points: 4,
     level: Level.Hard,
-    neededTokens: { Black: 7 },
+    neededTokens: { black: 7 },
   },
   {
     color: StandardColor.White,
     points: 4,
     level: Level.Hard,
-    neededTokens: { Black: 6, White: 3, Red: 3 },
+    neededTokens: { black: 6, white: 3, red: 3 },
   },
   {
     color: StandardColor.White,
     points: 5,
     level: Level.Hard,
-    neededTokens: { Black: 7, White: 3 },
+    neededTokens: { black: 7, white: 3 },
   },
 ];
 
-const GREEN_DEVELOPMENT_CARDS: {
-  color: StandardColor.Green;
-  points: 0 | 1 | 2 | 3 | 4 | 5;
-  neededTokens: PartialRecord<StandardColor, number>;
-  level: Level;
-}[] = [
+const GREEN_DEVELOPMENT_CARDS: ICard[] = [
   {
     color: StandardColor.Green,
     points: 0,
-    neededTokens: { Black: 1, Blue: 1, White: 1, Red: 1 },
+    neededTokens: { black: 1, blue: 1, white: 1, red: 1 },
     level: Level.Easy,
   },
   {
     color: StandardColor.Green,
     points: 0,
     level: Level.Easy,
-    neededTokens: { Black: 2, Blue: 1, White: 1, Red: 1 },
+    neededTokens: { black: 2, blue: 1, white: 1, red: 1 },
   },
   {
     color: StandardColor.Green,
     points: 0,
     level: Level.Easy,
-    neededTokens: { Black: 2, Blue: 1, Red: 2 },
+    neededTokens: { black: 2, blue: 1, red: 2 },
   },
   {
     color: StandardColor.Green,
     points: 0,
     level: Level.Easy,
-    neededTokens: { Blue: 3, White: 1, Green: 1 },
+    neededTokens: { blue: 3, white: 1, green: 1 },
   },
   {
     color: StandardColor.Green,
     points: 0,
     level: Level.Easy,
-    neededTokens: { Blue: 1, White: 2 },
+    neededTokens: { blue: 1, white: 2 },
   },
   {
     color: StandardColor.Green,
     points: 0,
     level: Level.Easy,
-    neededTokens: { Blue: 2, Red: 2 },
+    neededTokens: { blue: 2, red: 2 },
   },
   {
     color: StandardColor.Green,
     points: 0,
     level: Level.Easy,
-    neededTokens: { Red: 3 },
+    neededTokens: { red: 3 },
   },
   {
     color: StandardColor.Green,
     points: 1,
     level: Level.Easy,
-    neededTokens: { Black: 4 },
+    neededTokens: { black: 4 },
   },
   {
     color: StandardColor.Green,
     points: 1,
     level: Level.Medium,
-    neededTokens: { White: 3, Green: 2, Red: 3 },
+    neededTokens: { white: 3, green: 2, red: 3 },
   },
   {
     color: StandardColor.Green,
     points: 1,
     level: Level.Medium,
-    neededTokens: { Black: 2, Blue: 3, White: 2 },
+    neededTokens: { black: 2, blue: 3, white: 2 },
   },
   {
     color: StandardColor.Green,
     points: 2,
     level: Level.Medium,
-    neededTokens: { Black: 1, Blue: 2, White: 4 },
+    neededTokens: { black: 1, blue: 2, white: 4 },
   },
   {
     color: StandardColor.Green,
     points: 2,
     level: Level.Medium,
-    neededTokens: { Blue: 5, Green: 3 },
+    neededTokens: { blue: 5, green: 3 },
   },
   {
     color: StandardColor.Green,
     points: 2,
     level: Level.Medium,
-    neededTokens: { Green: 5 },
+    neededTokens: { green: 5 },
   },
   {
     color: StandardColor.Green,
     points: 3,
     level: Level.Medium,
-    neededTokens: { Green: 6 },
+    neededTokens: { green: 6 },
   },
   {
     color: StandardColor.Green,
     points: 3,
     level: Level.Hard,
-    neededTokens: { Black: 3, Blue: 3, White: 5, Red: 3 },
+    neededTokens: { black: 3, blue: 3, white: 5, red: 3 },
   },
   {
     color: StandardColor.Green,
     points: 4,
     level: Level.Hard,
-    neededTokens: { Blue: 7 },
+    neededTokens: { blue: 7 },
   },
   {
     color: StandardColor.Green,
     points: 4,
     level: Level.Hard,
-    neededTokens: { Blue: 6, White: 3, Green: 3 },
+    neededTokens: { blue: 6, white: 3, green: 3 },
   },
   {
     color: StandardColor.Green,
     points: 5,
     level: Level.Hard,
-    neededTokens: { Blue: 7, Green: 3 },
+    neededTokens: { blue: 7, green: 3 },
   },
 ];
 
-const RED_DEVELOPMENT_CARDS: {
-  color: StandardColor.Red;
-  points: 0 | 1 | 2 | 3 | 4 | 5;
-  neededTokens: PartialRecord<StandardColor, number>;
-  level: Level;
-}[] = [
+const RED_DEVELOPMENT_CARDS: ICard[] = [
   {
     color: StandardColor.Red,
     points: 0,
-    neededTokens: { Black: 1, Blue: 1, White: 1, Green: 1 },
+    neededTokens: { black: 1, blue: 1, white: 1, green: 1 },
     level: Level.Easy,
   },
   {
     color: StandardColor.Red,
     points: 0,
     level: Level.Easy,
-    neededTokens: { Black: 1, Blue: 1, White: 2, Green: 1 },
+    neededTokens: { black: 1, blue: 1, white: 2, green: 1 },
   },
   {
     color: StandardColor.Red,
     points: 0,
     level: Level.Easy,
-    neededTokens: { Black: 2, White: 2, Green: 1 },
+    neededTokens: { black: 2, white: 2, green: 1 },
   },
   {
     color: StandardColor.Red,
     points: 0,
     level: Level.Easy,
-    neededTokens: { Black: 3, White: 1, Red: 1 },
+    neededTokens: { black: 3, white: 1, red: 1 },
   },
   {
     color: StandardColor.Red,
     points: 0,
     level: Level.Easy,
-    neededTokens: { Blue: 2, Green: 1 },
+    neededTokens: { blue: 2, green: 1 },
   },
   {
     color: StandardColor.Red,
     points: 0,
     level: Level.Easy,
-    neededTokens: { White: 2, Red: 2 },
+    neededTokens: { white: 2, red: 2 },
   },
   {
     color: StandardColor.Red,
     points: 0,
     level: Level.Easy,
-    neededTokens: { White: 3 },
+    neededTokens: { white: 3 },
   },
   {
     color: StandardColor.Red,
     points: 1,
     level: Level.Easy,
-    neededTokens: { White: 4 },
+    neededTokens: { white: 4 },
   },
   {
     color: StandardColor.Red,
     points: 1,
     level: Level.Medium,
-    neededTokens: { Black: 3, White: 2, Red: 2 },
+    neededTokens: { black: 3, white: 2, red: 2 },
   },
   {
     color: StandardColor.Red,
     points: 1,
     level: Level.Medium,
-    neededTokens: { Black: 3, Blue: 3, Red: 2 },
+    neededTokens: { black: 3, blue: 3, red: 2 },
   },
   {
     color: StandardColor.Red,
     points: 2,
     level: Level.Medium,
-    neededTokens: { Blue: 4, White: 1, Green: 2 },
+    neededTokens: { blue: 4, white: 1, green: 2 },
   },
   {
     color: StandardColor.Red,
     points: 2,
     level: Level.Medium,
-    neededTokens: { Black: 5, White: 3 },
+    neededTokens: { black: 5, white: 3 },
   },
   {
     color: StandardColor.Red,
     points: 2,
     level: Level.Medium,
-    neededTokens: { Black: 5 },
+    neededTokens: { black: 5 },
   },
   {
     color: StandardColor.Red,
     points: 3,
     level: Level.Medium,
-    neededTokens: { Red: 6 },
+    neededTokens: { red: 6 },
   },
   {
     color: StandardColor.Red,
     points: 3,
     level: Level.Hard,
-    neededTokens: { Black: 3, Blue: 5, White: 3, Green: 3 },
+    neededTokens: { black: 3, blue: 5, white: 3, green: 3 },
   },
   {
     color: StandardColor.Red,
     points: 4,
     level: Level.Hard,
-    neededTokens: { Green: 7 },
+    neededTokens: { green: 7 },
   },
   {
     color: StandardColor.Red,
     points: 4,
     level: Level.Hard,
-    neededTokens: { Blue: 3, Green: 6, Red: 3 },
+    neededTokens: { blue: 3, green: 6, red: 3 },
   },
   {
     color: StandardColor.Red,
     points: 5,
     level: Level.Hard,
-    neededTokens: { Green: 7, Red: 3 },
+    neededTokens: { green: 7, red: 3 },
   },
 ];
 
-export class DevelopmentCard {
-  color: Color;
+export class DevelopmentCard implements ICard {
+  color: StandardColor;
   points: 0 | 1 | 2 | 3 | 4 | 5;
   neededTokens: PartialRecord<StandardColor, number>;
   level: Level;
@@ -596,7 +578,7 @@ export class DevelopmentCard {
   }
 
   toString() {
-    return `level: ${this.level}, color: ${this.color}, points: ${this.points}, red: ${this.neededTokens.Red}, green: ${this.neededTokens.Green}, blue: ${this.neededTokens.Blue}, white: ${this.neededTokens.White}, black: ${this.neededTokens.Black}`;
+    return `level: ${this.level}, color: ${this.color}, points: ${this.points}, red: ${this.neededTokens.red}, green: ${this.neededTokens.green}, blue: ${this.neededTokens.blue}, white: ${this.neededTokens.white}, black: ${this.neededTokens.black}`;
   }
 }
 

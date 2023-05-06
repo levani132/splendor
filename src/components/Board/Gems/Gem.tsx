@@ -8,9 +8,10 @@ export interface IGemProps {
   color: Color;
   className?: string;
   style?: CSSProperties;
+  onClick?: () => void;
 }
 
-export const Gem: FC<IGemProps> = ({ color, className, style }) => {
+export const Gem: FC<IGemProps> = ({ color, className, style, onClick }) => {
   const border = {
     [StandardColor.Red]: 'border-red-600',
     [StandardColor.Green]: 'border-green-600',
@@ -37,6 +38,7 @@ export const Gem: FC<IGemProps> = ({ color, className, style }) => {
         className
       )}
       style={style}
+      onClick={onClick}
     >
       <div
         className={concatClasses(

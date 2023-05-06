@@ -1,6 +1,7 @@
 import { FC } from 'react';
 
 import { Token } from 'models/Token';
+import { useGame } from 'contexts/GameContext';
 import { Gem } from './Gem';
 
 export interface IGemsProps {
@@ -8,19 +9,23 @@ export interface IGemsProps {
 }
 
 export const Gems: FC<IGemsProps> = ({ gems }) => {
+  const game = useGame();
+
   return (
     <div className="relative flex gap-2">
       <div className="relative w-15 h-15">
         {gems.map((gem, i) => {
+          const prev = gems[i - 1] ?? { bottom: 0, left: 0 };
           return (
             <Gem
               key={i}
               color={gem.color}
-              className="absolute"
+              className="absolute cursor-pointer"
               style={{
-                bottom: `${gem.bottom}px`,
-                left: `${gem.left}px`,
+                bottom: `${prev.bottom + gem.bottom}px`,
+                left: `${prev.left + gem.left}px`,
               }}
+              onClick={() => game.takeToken(gem.color)}
             />
           );
         })}

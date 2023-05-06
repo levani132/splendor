@@ -1,21 +1,21 @@
 import { FC } from 'react';
 
 import { DevelopmentCard } from 'models/DevelopmentCard';
-import { GameState } from 'models/GameState';
+import { BoardState } from 'models/Game/BoardState/BoardState';
 import { Card } from './Card';
 
 export interface IClosedCardsProps {
   cards: DevelopmentCard[];
-  gameState: GameState;
+  boardState: BoardState;
 }
 
-export const ClosedCards: FC<IClosedCardsProps> = ({ cards, gameState }) => {
+export const ClosedCards: FC<IClosedCardsProps> = ({ cards, boardState }) => {
   return (
     <div className="relative w-32 h-35">
       {cards.map((card, i) => (
         <Card
           key={card.toString()}
-          gameState={gameState}
+          boardState={boardState}
           card={card}
           className="absolute"
           style={{ left: `${i}px` }}
