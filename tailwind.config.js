@@ -27,6 +27,10 @@ module.exports = {
       boxShadow: {
         'extra-overlay': '10px 10px 295px 100px rgba(0,0,0,0.75)',
       },
+      colors: {
+        'primary-bg': 'var(--primary-bg)',
+        'primary-border': 'var(--primary-border)',
+      },
     },
   },
   plugins: [

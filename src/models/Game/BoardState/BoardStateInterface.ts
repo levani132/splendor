@@ -1,17 +1,17 @@
 import { DevelopmentCard } from 'models/DevelopmentCard';
 import { Noble } from 'models/Noble';
-import { Token } from 'models/Token';
+import { Gem } from 'models/Gem';
 
 export interface BoardStateInterface {
-  redTokens: Token[];
-  greenTokens: Token[];
-  blueTokens: Token[];
-  whiteTokens: Token[];
-  blackTokens: Token[];
+  redGems: Gem[];
+  greenGems: Gem[];
+  blueGems: Gem[];
+  whiteGems: Gem[];
+  blackGems: Gem[];
 
-  goldTokens: Token[];
+  goldGems: Gem[];
 
-  transaction: Token[];
+  transaction: Gem[];
 
   easyCards: DevelopmentCard[];
   easyCardsOpen: (DevelopmentCard | undefined)[];
@@ -20,5 +20,5 @@ export interface BoardStateInterface {
   hardCards: DevelopmentCard[];
   hardCardsOpen: (DevelopmentCard | undefined)[];
 
-  nobles: Noble[];
+  nobles: (Noble | undefined)[];
 }

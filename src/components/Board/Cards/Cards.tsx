@@ -19,11 +19,12 @@ export const Cards: FC<CardsProps> = ({ cards, openCards }) => {
       <ClosedCards cards={cards} boardState={boardState} />
       {openCards.map((card, i) => (
         <Card
-          boardState={boardState}
           key={card?.toString() ?? i}
           card={card}
           initialX={-128 - 116 * i + cards.length}
+          initialY={-cards.length / 2}
           onClick={() => card && game.takeCard(card.level, i)}
+          onHandClick={() => card && game.bookCard(card.level, i)}
         />
       ))}
     </>

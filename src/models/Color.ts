@@ -37,3 +37,12 @@ export const Gems = {
   [StandardColor.Black]: black,
   [SpecialColor.Gold]: gold,
 };
+
+export const getBgColor = (color: StandardColor) =>
+  ({
+    [StandardColor.Red]: 'bg-red-400',
+    [StandardColor.Green]: 'bg-green-400',
+    [StandardColor.Blue]: 'bg-blue-400',
+    [StandardColor.Black]: 'bg-gray-900',
+    [StandardColor.White]: 'bg-slate-300',
+  }[color]);

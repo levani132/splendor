@@ -42,7 +42,7 @@ export const Gem: FC<IGemProps> = ({ color, className, style, onClick }) => {
     >
       <div
         className={concatClasses(
-          'w-10 h-10',
+          'w-10 h-10 max-h-full select-none',
           color === StandardColor.White && 'relative -left-1'
         )}
       >

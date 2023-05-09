@@ -1,11 +1,11 @@
 import { FC } from 'react';
 
-import { Token } from 'models/Token';
+import { Gem as GemModel } from 'models/Gem';
 import { useGame } from 'contexts/GameContext';
 import { Gem } from './Gem';
 
 export interface IGemsProps {
-  gems: Token[];
+  gems: GemModel[];
 }
 
 export const Gems: FC<IGemsProps> = ({ gems }) => {
@@ -25,12 +25,12 @@ export const Gems: FC<IGemsProps> = ({ gems }) => {
                 bottom: `${prev.bottom + gem.bottom}px`,
                 left: `${prev.left + gem.left}px`,
               }}
-              onClick={() => game.takeToken(gem.color)}
+              onClick={() => game.takeGem(gem.color)}
             />
           );
         })}
       </div>
-      <div className="self-end">{gems.length}</div>
+      <div className="self-end select-none">{gems.length}</div>
     </div>
   );
 };

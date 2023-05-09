@@ -3,6 +3,7 @@ import { observer } from 'mobx-react-lite';
 
 import { Board } from 'components/Board/Board';
 import { Game as GameModel } from 'models/Game/Game';
+import { Game as GameComponent } from 'components/Game';
 import { GameContext } from 'src/contexts/GameContext';
 
 export const getServerSideProps = () => {
@@ -15,11 +16,7 @@ export const getServerSideProps = () => {
 
 const Game = ({ game: gameParam }) => {
   const game = useMemo(() => new GameModel(gameParam), [gameParam]);
-  return (
-    <GameContext.Provider value={game}>
-      <div>{game && <Board />}</div>
-    </GameContext.Provider>
-  );
+  return <GameComponent game={game} />;
 };
 
 export default observer(Game);

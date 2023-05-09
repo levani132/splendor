@@ -37,7 +37,9 @@
       "utils": ["src/utils"],
       "mobx/*": ["src/mobx/*"]
     },
-    "incremental": true
+    "incremental": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   },
   "include": [
     "next-env.d.ts",

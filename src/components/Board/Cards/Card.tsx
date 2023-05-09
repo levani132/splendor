@@ -10,34 +10,35 @@ import Image from 'next/image';
 
 import { concatClasses } from 'utils/concatClasses';
 import { DevelopmentCard } from 'models/DevelopmentCard';
-import { BoardState } from 'models/Game/BoardState/BoardState';
 import { Level } from 'models/Level';
 import { Gems, StandardColor } from 'models/Color';
 import { RequiredPoints } from '../../shared/RequiredPoints/RequiredPoints';
 
-import hand from 'public/icons/hand.png';
-import coinHand from 'public/icons/coin-hand.png';
-import money from 'public/icons/money.png';
-import { reaction } from 'mobx';
+import { HandIcon } from './HandIcon';
 
 export interface ICardProps {
-  boardState: BoardState;
   card?: DevelopmentCard;
   initialX?: number;
+  initialY?: number;
   closed?: boolean;
   className?: string;
   style?: CSSProperties;
+  /**
+   * Defaults to true.
+   */
+  scaleOnHover?: boolean;
   onClick?: () => void;
   onHandClick?: () => void;
 }
 
 export const Card: FC<ICardProps> = ({
   card,
-  boardState,
   closed = false,
   className,
   style,
   initialX = 0,
+  initialY = 0,
+  scaleOnHover = true,
   onClick,
   onHandClick,
 }) => {
@@ -50,17 +51,19 @@ export const Card: FC<ICardProps> = ({
       [Level.Hard]: 'bg-blue-400',
     }[card.level];
   const [animationStyles, setAnimationStyles] = useState<CSSProperties>(
-    closed
+    closed || !card
       ? {}
       : {
-          transform: `translateX(${initialX}px)`,
+          transform: `translateX(${initialX}px) translateY(${initialY}px)`,
         }
   );
   const [tempClosed, setTempClosed] = useState(!closed);
 
   useEffect(() => {
     setAnimationStyles(
-      closed ? {} : { transform: 'translateX(0) rotateY(180deg) scale(1)' }
+      closed
+        ? {}
+        : { transform: 'translateX(0) translateY(0) rotateY(180deg) scale(1)' }
     );
     const timeout = setTimeout(() => {
       if (!closed) setTempClosed(false);
@@ -88,7 +91,9 @@ export const Card: FC<ICardProps> = ({
       closed
         ? {}
         : {
-            transform: 'translateX(0) rotateY(180deg) scale(1.1)',
+            transform: `translateX(0) translateY(0) rotateY(180deg) scale(${
+              scaleOnHover ? '1.1' : '1'
+            })`,
           }
     );
   };
@@ -98,7 +103,7 @@ export const Card: FC<ICardProps> = ({
       closed
         ? {}
         : {
-            transform: 'translateX(0) rotateY(180deg) scale(1)',
+            transform: 'translateX(0) translateY(0) rotateY(180deg) scale(1)',
           }
     );
   };
@@ -114,33 +119,29 @@ export const Card: FC<ICardProps> = ({
         )}
       >
         <div className="h-9 bg-neutral-300/50 flex justify-between items-center p-2">
-          <div className="font-pacifico relative -top-1 text-white">
+          <div className="font-pacifico relative -top-1 text-white select-none">
             {card.points || ''}
           </div>
-          <div className="h-5 w-5">
+          <div className="h-5 w-5 select-none">
             <Image src={Gems[card.color]} alt="" aria-hidden />
           </div>
         </div>
         <div className="flex justify-between h-full items-end">
           <RequiredPoints
             className="grow-3 justify-end p-1 px-1.5"
-            neededColors={card.neededTokens}
+            neededColors={card.neededGems}
           />
-          <div className="flex flex-col justify-end items-end p-3 h-full transition-opacity duration-300 opacity-0 group-hover:opacity-100">
-            <div
-              className="w-8 h-8 cursor-pointer hover:h-9 hover:w-9 transition-all"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                onHandClick?.();
-              }}
-            >
-              <Image
-                src={boardState.goldTokens?.length ? coinHand : hand}
-                className="hover:drop-shadow-lg"
+          {scaleOnHover && (
+            <div className="flex flex-col justify-end items-end p-3 h-full transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+              <HandIcon
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  onHandClick?.();
+                }}
               />
             </div>
-          </div>
+          )}
         </div>
       </div>
     );
@@ -153,7 +154,7 @@ export const Card: FC<ICardProps> = ({
             closedBackground
           )}
         >
-          <div className="flex-1 flex items-center text-yellow-300 font-pacifico">
+          <div className="flex-1 flex items-center text-yellow-300 font-pacifico select-none">
             Splendor
           </div>
           <div className="w-full flex gap-2 justify-center">
@@ -178,9 +179,11 @@ export const Card: FC<ICardProps> = ({
   return (
     <div
       className={concatClasses(
-        'w-25 h-35 drop-shadow-md rounded-lg overflow-hidden',
-        'transition-transform cursor-pointer duration-300 ease-linear group',
-        wrapperBackground,
+        'w-25 h-35',
+        card && 'drop-shadow-md rounded-lg overflow-hidden',
+        card &&
+          'transition-transform cursor-pointer duration-300 ease-linear group',
+        card && wrapperBackground,
         className,
         (closed || tempClosed) && 'p-2'
       )}

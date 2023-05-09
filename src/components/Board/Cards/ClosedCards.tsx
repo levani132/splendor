@@ -15,10 +15,9 @@ export const ClosedCards: FC<IClosedCardsProps> = ({ cards, boardState }) => {
       {cards.map((card, i) => (
         <Card
           key={card.toString()}
-          boardState={boardState}
           card={card}
           className="absolute"
-          style={{ left: `${i}px` }}
+          style={{ left: `${i}px`, bottom: `${i / 2}px` }}
           closed
         />
       ))}

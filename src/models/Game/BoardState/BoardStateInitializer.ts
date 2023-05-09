@@ -6,28 +6,28 @@ import {
   randomize,
 } from './BoardStateUtils';
 import { ALL_DEVELOPMENT_CARDS, DevelopmentCard } from 'models/DevelopmentCard';
-import { Token } from 'models/Token';
+import { Gem } from 'models/Gem';
 import { Color, SpecialColor, StandardColor } from 'models/Color';
 import { makeObservable, observable } from 'mobx';
 import { Level } from 'models/Level';
 
 export class GameStateInitializer implements BoardStateInterface {
-  redTokens: Token[];
-  greenTokens: Token[];
-  blueTokens: Token[];
-  whiteTokens: Token[];
-  blackTokens: Token[];
-  goldTokens: Token[];
+  @observable redGems: Gem[];
+  @observable greenGems: Gem[];
+  @observable blueGems: Gem[];
+  @observable whiteGems: Gem[];
+  @observable blackGems: Gem[];
+  @observable goldGems: Gem[];
 
-  transaction: Token[];
+  @observable transaction: Gem[];
 
-  easyCards: DevelopmentCard[];
-  easyCardsOpen: (DevelopmentCard | undefined)[];
-  mediumCards: DevelopmentCard[];
-  mediumCardsOpen: (DevelopmentCard | undefined)[];
-  hardCards: DevelopmentCard[];
-  hardCardsOpen: (DevelopmentCard | undefined)[];
-  nobles: Noble[];
+  @observable easyCards: DevelopmentCard[];
+  @observable easyCardsOpen: (DevelopmentCard | undefined)[];
+  @observable mediumCards: DevelopmentCard[];
+  @observable mediumCardsOpen: (DevelopmentCard | undefined)[];
+  @observable hardCards: DevelopmentCard[];
+  @observable hardCardsOpen: (DevelopmentCard | undefined)[];
+  @observable nobles: (Noble | undefined)[];
 
   constructor(players: number);
   constructor(boardState: BoardStateInterface);
@@ -36,12 +36,12 @@ export class GameStateInitializer implements BoardStateInterface {
     const players = typeof param1 === 'number' ? param1 : undefined;
     const boardState = typeof param1 !== 'number' ? param1 : undefined;
     if (players) {
-      const nTokens = players === 2 ? 5 : players === 3 ? 6 : 8;
-      const nGoldenTokens = 5;
+      const nGems = players === 2 ? 5 : players === 3 ? 6 : 8;
+      const nGoldenGems = 5;
       const nNobles = Math.min(NOBLE_TILES.length, players + 1);
 
       this.transaction = [];
-      this.randomizeTokens(nTokens, nGoldenTokens);
+      this.randomizeGems(nGems, nGoldenGems);
       this.nobles = randomize(NOBLE_TILES, nNobles);
       this.randomizeCards();
       this.initOpenCards();
@@ -49,30 +49,14 @@ export class GameStateInitializer implements BoardStateInterface {
     if (boardState) {
       this.copyFromOldState(boardState);
     }
-    makeObservable(this, {
-      redTokens: observable,
-      greenTokens: observable,
-      blueTokens: observable,
-      whiteTokens: observable,
-      blackTokens: observable,
-      goldTokens: observable,
-      transaction: observable,
-      easyCards: observable,
-      easyCardsOpen: observable,
-      mediumCards: observable,
-      mediumCardsOpen: observable,
-      hardCards: observable,
-      hardCardsOpen: observable,
-      nobles: observable,
-    });
+    makeObservable(this);
   }
 
   protected openCards(nCardsToOpen, cardType: Level) {
     const cards = this[cardType + 'Cards'] as DevelopmentCard[];
-    const cardsOpen = this[cardType + 'CardsOpen'] as (
-      | DevelopmentCard
-      | undefined
-    )[];
+    const cardsOpen = this[
+      cardType + 'CardsOpen'
+    ] as (DevelopmentCard | null)[];
     const nOpenCards = cardsOpen.filter((c) => !!c).length;
     if (
       // Open cards after this action will exceed max allowed cards.
@@ -87,7 +71,7 @@ export class GameStateInitializer implements BoardStateInterface {
     this[cardType + 'Cards'] = cards.slice(0, cards.length - nCardsToOpen);
     for (let i = 0; i < cardsOpen.length; i++) {
       if (!cardsOpen[i]) {
-        cardsOpen[i] = newCards.pop();
+        cardsOpen[i] = newCards.pop() ?? null;
         if (!cardsOpen[i]) {
           return false;
         }
@@ -118,28 +102,28 @@ export class GameStateInitializer implements BoardStateInterface {
     this.hardCards = randomize(hard, hard.length);
   }
 
-  private randomizeTokens(nTokens, nGoldenTokens) {
-    const tokens = (color: Color, n: number) =>
-      new Array(n).fill(color).map(Token.createToken);
-    this.redTokens = tokens(StandardColor.Red, nTokens);
-    this.greenTokens = tokens(StandardColor.Green, nTokens);
-    this.blueTokens = tokens(StandardColor.Blue, nTokens);
-    this.whiteTokens = tokens(StandardColor.White, nTokens);
-    this.blackTokens = tokens(StandardColor.Black, nTokens);
-    // Golden token
-    this.goldTokens = tokens(SpecialColor.Gold, nGoldenTokens);
+  private randomizeGems(nGems, nGoldenGems) {
+    const gems = (color: Color, n: number) =>
+      new Array(n).fill(color).map(Gem.createGem);
+    this.redGems = gems(StandardColor.Red, nGems);
+    this.greenGems = gems(StandardColor.Green, nGems);
+    this.blueGems = gems(StandardColor.Blue, nGems);
+    this.whiteGems = gems(StandardColor.White, nGems);
+    this.blackGems = gems(StandardColor.Black, nGems);
+    // Golden gem
+    this.goldGems = gems(SpecialColor.Gold, nGoldenGems);
   }
 
   private copyFromOldState(boardState: BoardStateInterface) {
     const copyCards = <T extends DevelopmentCard | undefined>(cards: T[]) =>
       cards.map((c) => c && new DevelopmentCard(c));
     this.transaction = boardState.transaction;
-    this.redTokens = boardState.redTokens;
-    this.greenTokens = boardState.greenTokens;
-    this.blueTokens = boardState.blueTokens;
-    this.whiteTokens = boardState.whiteTokens;
-    this.blackTokens = boardState.blackTokens;
-    this.goldTokens = boardState.goldTokens;
+    this.redGems = boardState.redGems;
+    this.greenGems = boardState.greenGems;
+    this.blueGems = boardState.blueGems;
+    this.whiteGems = boardState.whiteGems;
+    this.blackGems = boardState.blackGems;
+    this.goldGems = boardState.goldGems;
     this.nobles = boardState.nobles;
     this.easyCards = copyCards(boardState.easyCards);
     this.mediumCards = copyCards(boardState.mediumCards);

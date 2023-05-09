@@ -11,8 +11,11 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Pacifico, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+  --primary-bg: 'white';
+  --primary-border: #202020;
 }
 
 a {
@@ -32,5 +35,17 @@ a {
   body {
     color: white;
     background: #202020;
+
+    --primary-bg: #202020;
+    --primary-border: #313131;
   }
+}
+
+.perspective {
+  perspective: 200px;
+}
+
+.perspective > * {
+  transform: rotateX(2deg) translateZ(-15px);
+  transform-style: preserve-3d;
 }
