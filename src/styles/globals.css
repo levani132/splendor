@@ -46,7 +46,7 @@ a {
 }
 
 .perspective > * {
-  transform: rotateX(2deg) translateZ(-15px);
+  transform: rotateX(2deg) translateZ(-100px);
   transform-style: preserve-3d;
 }
 

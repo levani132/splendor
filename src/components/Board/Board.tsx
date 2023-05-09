@@ -61,7 +61,7 @@ export const Board: FC<IBoardProps> = observer(() => {
       <div
         className="rounded-[200px] bg-lime-900 py-20 px-64 border-[100px] border-black pointer-events-auto board"
         style={{
-          transform: `scale(${scale}) rotateX(2deg) translateZ(-50px)`,
+          transform: `scale(${scale}) rotateX(2deg) translateZ(-100px)`,
         }}
       >
         <div className="all-cards flex gap-4 items-center relative z-0 portrait:flex-col-reverse">
