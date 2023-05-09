@@ -3,6 +3,7 @@ import { FC } from 'react';
 import { Gem as GemModel } from 'models/Gem';
 import { useGame } from 'contexts/GameContext';
 import { Gem } from './Gem';
+import { SpecialColor } from 'models/Color';
 
 export interface IGemsProps {
   gems: GemModel[];
@@ -25,7 +26,9 @@ export const Gems: FC<IGemsProps> = ({ gems }) => {
                 bottom: `${prev.bottom + gem.bottom}px`,
                 left: `${prev.left + gem.left}px`,
               }}
-              onClick={() => game.takeGem(gem.color)}
+              onClick={() =>
+                gem.color !== SpecialColor.Gold && game.takeGem(gem.color)
+              }
             />
           );
         })}
