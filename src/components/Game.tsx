@@ -13,7 +13,7 @@ interface GameProps {
 export const Game: FC<GameProps> = ({ game }) => {
   return (
     <GameContext.Provider value={game}>
-      <div>
+      <div className="w-screen h-screen">
         <Board />
         <Players />
         <Logs />

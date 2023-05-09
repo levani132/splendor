@@ -133,6 +133,7 @@ export class BoardState
     const res = this.transaction;
     if (color) {
       res.push(this[color + 'Gems'].pop() as Gem);
+      this[color + 'Gems'] = this[color + 'Gems'].slice();
     }
     this.transaction = [];
     return res;
@@ -140,6 +141,7 @@ export class BoardState
 
   private addToTransaction(color: Color) {
     this.transaction.push(this[color + 'Gems'].pop() as Gem);
+    this[color + 'Gems'] = this[color + 'Gems'].slice();
     return [];
   }
 }

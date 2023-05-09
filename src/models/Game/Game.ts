@@ -135,6 +135,12 @@ export class Game {
     }
   }
 
+  @action returnTransactionGem(i: number) {
+    const gem = this.boardState.transaction[i];
+    this.boardState.transaction.splice(i, 1);
+    this.boardState.returnGem(gem);
+  }
+
   @action returnGem(color: Color): void {
     if (this.action !== Action.ReturningGems) {
       return;

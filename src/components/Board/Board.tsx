@@ -8,6 +8,7 @@ import { NobleTile } from './Nobles/NobleTile';
 import { Cards } from './Cards/Cards';
 import { Gem } from './Gems/Gem';
 import { Nobles } from './Nobles/Nobles';
+import { Transaction } from './Gems/Transaction';
 
 export interface IBoardProps {}
 
@@ -43,28 +44,17 @@ export const Board: FC<IBoardProps> = observer(() => {
     </div>
   );
 
-  const transactionsMaybe = boardState.transaction.length ? (
-    <div className="coins absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-      <div className="shadow-extra-overlay absolute top-1/2 left-1/2 w-0 h-0" />
-      <div className="coins flex gap-1">
-        {boardState.transaction.map((gem, i) => (
-          <Gem key={i} color={gem.color} />
-        ))}
-      </div>
-    </div>
-  ) : null;
-
   return (
     <div className="flex justify-center items-center h-screen relative z-10 pointer-events-none perspective">
       <div className="rounded-[200px] bg-lime-900 py-20 px-64 border-[100px] border-black pointer-events-auto">
-        <div className="all-cards flex gap-4 items-center">
+        <div className="all-cards flex gap-4 items-center relative z-0">
           <div className="flex flex-col gap-7">
             {allCards}
             {allGems}
           </div>
           <Nobles />
         </div>
-        {transactionsMaybe}
+        <Transaction />
       </div>
     </div>
   );
