@@ -49,3 +49,17 @@ a {
   transform: rotateX(2deg) translateZ(-15px);
   transform-style: preserve-3d;
 }
+
+@media (pointer: coarse) {
+  body {
+    background-color: rgb(54 83 20);
+  }
+
+  .coarse-opacity {
+    opacity: 1;
+  }
+
+  .board {
+    border: none;
+  }
+}

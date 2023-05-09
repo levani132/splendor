@@ -132,7 +132,7 @@ export const Card: FC<ICardProps> = ({
             neededColors={card.neededGems}
           />
           {scaleOnHover && (
-            <div className="flex flex-col justify-end items-end p-3 h-full transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+            <div className="flex flex-col justify-end items-end p-3 h-full transition-opacity duration-300 opacity-0 group-hover:opacity-100 coarse-opacity">
               <HandIcon
                 onClick={(e) => {
                   e.preventDefault();

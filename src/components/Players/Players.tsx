@@ -15,7 +15,7 @@ export const Players = observer(() => {
   const game = useGame();
 
   return (
-    <div className="absolute inset-0 pointer-events-none">
+    <div className="absolute inset-0 pointer-events-none z-10">
       {game.players.map((player, i) => (
         <Player
           key={i}

@@ -11,7 +11,7 @@ const GAP = 4;
 const NOBLE_WIDTH = 100;
 const NOBLE_GAP = 16;
 
-const CLOSED_CARDS_WIDTH = 128;
+const CLOSED_CARDS_WIDTH = 100;
 const CARD_WIDTH = 100;
 const CARDS_GAP = 16;
 

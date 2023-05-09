@@ -11,6 +11,10 @@ interface CardsProps {
   openCards: (DevelopmentCard | undefined)[];
 }
 
+const CLOSED_CARDS_WIDTH = 100;
+const CARD_WIDTH = 100;
+const GAP = 16;
+
 export const Cards: FC<CardsProps> = ({ cards, openCards }) => {
   const game = useGame();
   const boardState = game.boardState;
@@ -21,7 +25,9 @@ export const Cards: FC<CardsProps> = ({ cards, openCards }) => {
         <Card
           key={card?.toString() ?? i}
           card={card}
-          initialX={-128 - 116 * i - cards.length / 4}
+          initialX={
+            -CLOSED_CARDS_WIDTH - (CARD_WIDTH + GAP) * i - cards.length / 4
+          }
           initialY={-cards.length / 2}
           onClick={() => card && game.takeCard(card.level, i)}
           onHandClick={() => card && game.bookCard(card.level, i)}

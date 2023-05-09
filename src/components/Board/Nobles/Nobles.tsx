@@ -14,7 +14,7 @@ export const Nobles = observer(() => {
   );
 
   return (
-    <div className="nobles flex flex-col justify-between gap-1">
+    <div className="nobles flex flex-col justify-between gap-1 portrait:flex-row">
       {boardState.nobles.map((noble, i) => (
         <NobleTile
           key={noble?.name ?? i}

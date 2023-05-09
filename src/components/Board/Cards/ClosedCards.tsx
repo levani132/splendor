@@ -11,7 +11,7 @@ export interface IClosedCardsProps {
 
 export const ClosedCards: FC<IClosedCardsProps> = ({ cards, boardState }) => {
   return (
-    <div className="relative w-32 h-35">
+    <div className="relative w-25 h-35">
       {cards.map((card, i) => (
         <Card
           key={card.toString()}
