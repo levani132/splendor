@@ -51,6 +51,7 @@ class MyDocument extends Document {
             content="/images/icons/icon-144x144.png"
           ></meta>
           <meta name="theme-color" content="#365314" />
+          <title>Splendor</title>
         </Head>
         <body>
           <Main />
