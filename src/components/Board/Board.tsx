@@ -53,19 +53,19 @@ export const Board: FC<IBoardProps> = observer(() => {
   // Height: 990 // One player height 44, two 88 + 22 // 902
   const scale =
     width > height
-      ? Math.min(((width - 92) / 708) * 1.3, ((height - 100) / 540) * 1.3, 1.3)
-      : Math.min(((width - 74) / 516) * 1.3, ((height - 110) / 880) * 1.3, 1.3);
+      ? Math.min((width - 92) / 708, (height - 100) / 540, 1)
+      : Math.min((width - 74) / 516, (height - 110) / 880, 1);
 
   return (
     <div className="flex justify-center items-center h-screen relative z-10 pointer-events-none perspective">
       <div
         className="rounded-[200px] bg-lime-900 py-20 px-64 border-[100px] border-black pointer-events-auto board"
         style={{
-          transform: `scale(${scale}) rotateX(2deg) translateZ(-100px)`,
+          transform: `scale(${scale}) rotateX(2deg) translateZ(-15px)`,
         }}
       >
         <div className="all-cards flex gap-4 items-center relative z-0 portrait:flex-col-reverse">
-          <div className="flex flex-col gap-7 portrait:flex-row-reverse">
+          <div className="flex flex-col gap-7 portrait:flex-row-reverse relative z-10">
             {allCards}
             {allGems}
           </div>

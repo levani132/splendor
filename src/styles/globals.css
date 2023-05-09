@@ -50,6 +50,16 @@ a {
   transform-style: preserve-3d;
 }
 
+@media (orientation: portrait) {
+  body {
+    background-color: rgb(54 83 20);
+  }
+
+  .perspective {
+    perspective: none;
+  }
+}
+
 @media (pointer: coarse) {
   body {
     background-color: rgb(54 83 20);
