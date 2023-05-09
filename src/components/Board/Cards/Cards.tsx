@@ -21,7 +21,7 @@ export const Cards: FC<CardsProps> = ({ cards, openCards }) => {
         <Card
           key={card?.toString() ?? i}
           card={card}
-          initialX={-128 - 116 * i + cards.length}
+          initialX={-128 - 116 * i - cards.length / 4}
           initialY={-cards.length / 2}
           onClick={() => card && game.takeCard(card.level, i)}
           onHandClick={() => card && game.bookCard(card.level, i)}
