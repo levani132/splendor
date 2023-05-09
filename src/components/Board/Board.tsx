@@ -57,14 +57,14 @@ export const Board: FC<IBoardProps> = observer(() => {
       : Math.min((width - 74) / 516, (height - 110) / 880, 1);
 
   return (
-    <div className="flex justify-center items-center h-screen relative z-10 pointer-events-none perspective">
+    <div className="flex justify-center items-center h-screen relative z-20 pointer-events-none perspective">
       <div
-        className="rounded-[200px] bg-lime-900 py-20 px-64 border-[100px] border-black pointer-events-auto board"
+        className="rounded-[200px] py-20 px-64 border-[100px] border-black board"
         style={{
           transform: `scale(${scale}) rotateX(2deg) translateZ(-15px)`,
         }}
       >
-        <div className="all-cards flex gap-4 items-center relative z-0 portrait:flex-col-reverse">
+        <div className="all-cards flex gap-4 items-center relative z-0 portrait:flex-col-reverse pointer-events-auto">
           <div className="flex flex-col gap-7 portrait:flex-row-reverse relative z-10">
             {allCards}
             {allGems}

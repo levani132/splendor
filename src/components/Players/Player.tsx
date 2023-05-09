@@ -64,7 +64,8 @@ export const Player: FC<PlayerProps> = observer(
         >
           <div
             className={concatClasses(
-              'w-full h-0 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2',
+              'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2',
+              isVertical ? 'w-0 h-full' : 'w-full h-0',
               isCurrentPlayer && 'shadow-extra-overlay shadow-amber-300'
             )}
           ></div>

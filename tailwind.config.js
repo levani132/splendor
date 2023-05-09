@@ -25,7 +25,9 @@ module.exports = {
         '5-auto': 'repeat(5, auto)',
       },
       boxShadow: {
-        'extra-overlay': '10px 10px 30vw 4vw rgba(0,0,0,0.75)',
+        'extra-overlay': '0px 0px 70px 50px rgba(0,0,0,0.75)',
+        player:
+          '0 25px 50px -12px rgb(0 0 0 / 0.25), inset 0 4px 6px -1px rgb(0 0 0 / 0.1)',
       },
       colors: {
         'primary-bg': 'var(--primary-bg)',
