@@ -52,7 +52,7 @@ export const Player: FC<PlayerProps> = observer(
     return (
       <div
         className={concatClasses(
-          `absolute pointer-events-none flex inset-0`,
+          `absolute pointer-events-none flex inset-0 portrait:pb-5`,
           DIRECTIONS[direction]
         )}
       >
