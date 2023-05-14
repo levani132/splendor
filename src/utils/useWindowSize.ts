@@ -4,9 +4,13 @@ export function useWindowSize() {
   const [windowSize, setWindowSize] = useState<{
     width?: number;
     height?: number;
+    isPortrait: boolean;
+    isLandscape: boolean;
   }>({
     width: undefined,
     height: undefined,
+    isPortrait: false,
+    isLandscape: false,
   });
 
   useEffect(() => {
@@ -14,6 +18,8 @@ export function useWindowSize() {
       setWindowSize({
         width: window.innerWidth,
         height: window.innerHeight,
+        isPortrait: window.innerHeight > window.innerWidth,
+        isLandscape: window.innerHeight <= window.innerWidth,
       });
     }
 

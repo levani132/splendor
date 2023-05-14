@@ -41,15 +41,6 @@ a {
   }
 }
 
-.perspective {
-  perspective: 200px;
-}
-
-.perspective > * {
-  transform: rotateX(2deg) translateZ(-100px);
-  transform-style: preserve-3d;
-}
-
 @media (orientation: portrait) {
   body {
     background-color: rgb(54 83 20);
