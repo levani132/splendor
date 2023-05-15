@@ -15,11 +15,13 @@ export function useWindowSize() {
 
   useEffect(() => {
     function handleResize() {
+      const width = document.documentElement.clientWidth;
+      const height = document.documentElement.clientHeight;
       setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-        isPortrait: window.innerHeight > window.innerWidth,
-        isLandscape: window.innerHeight <= window.innerWidth,
+        width,
+        height,
+        isPortrait: height > width,
+        isLandscape: height <= width,
       });
     }
 
