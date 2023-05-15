@@ -24,6 +24,7 @@ export function useWindowSize() {
     }
 
     window.addEventListener('resize', handleResize);
+    window.addEventListener('deviceorientation', handleResize);
 
     handleResize();
 
